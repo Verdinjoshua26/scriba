@@ -1,4 +1,4 @@
-<%= form_for(@transcription) do |f| %>
+<%= form_for(@transcription, :html => {:multipart => true}) do |f| %>
   <% if @transcription.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@transcription.errors.count, "error") %> prohibited this transcription from being saved:</h2>
@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :picture %><br>
-    <%= f.text_field :picture %>
+    <%= f.file_field :picture %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
