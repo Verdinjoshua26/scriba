@@ -43,3 +43,21 @@
   <%= link_to 'Back', transcriptions_path, class: "btn btn-success" %>
 </div>
 
+<div class="row">
+  <div class="col-md-12">
+    <h3 class="page-header">Comments</h3>
+  </div>
+</div>
+
+<% @comments.each do |comment| %>
+<div class="row">
+  <div class="md-col-10 col-md-offset-1">
+    <div class="comment">
+      <p><strong><%= comment.user_name %></strong></p>
+      <%= simple_format comment.body %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<%= render 'comments/form' %>
