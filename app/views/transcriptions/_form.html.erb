@@ -1,37 +1,41 @@
-<%= form_for(@transcription, :html => {:multipart => true}) do |f| %>
-  <% if @transcription.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@transcription.errors.count, "error") %> prohibited this transcription from being saved:</h2>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for(@transcription, :html => {:multipart => true}, :role => 'form') do |f| %>
+      <% if @transcription.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@transcription.errors.count, "error") %> prohibited this transcription from being saved:</h2>
 
-      <ul>
-      <% @transcription.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @transcription.errors.full_messages.each do |message| %>
+            <li class="alert alert-warning"><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: "form-control", placeholder: "Document Title" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :user_name %><br>
+        <%= f.text_field :user_name, class: "form-control", placeholder: "User name" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, class: "form-control", placeholder: "Document Description" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :picture %><br>
+        <%= f.file_field :picture %>
+        <p class="help-block">Image for document.</p>
+      </div>
+      <div class="actions">
+        <%= f.submit "Save", class: "btn btn-default" %>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :user_name %><br>
-    <%= f.text_field :user_name %>
-  </div>
-  <div class="field">
-    <%= f.label :picture %><br>
-    <%= f.file_field :picture %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :transcription %><br>
-    <%= f.text_area :transcription %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+

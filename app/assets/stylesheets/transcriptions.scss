@@ -2,7 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body { padding-top: 100px; }
-footer { margin-top: 100px; }
-table, td, th { vertical-align: middle; border: none; }
+$base-color: #AD141E;
+$lightgray: #999;
+$black: #000;
+$white: #FFF;
+
+$lighter: lighten($base-color, 20% );
+$darker: darken($base-color, 20% );
+$transparent: rgba($base-color, 0.7 );
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow($top, $left, $blur, $size, $color, $inset: false) {
+  @if $inset {
+      -webkit-box-shadow:inset $top $left $blur $size $color;
+      -moz-box-shadow:inset $top $left $blur $size $color;
+      box-shadow:inset $top $left $blur $size $color;
+  } @else {
+      -webkit-box-shadow: $top $left $blur $size $color;
+      -moz-box-shadow: $top $left $blur $size $color;
+      box-shadow: $top $left $blur $size $color;
+  }
+}
+
+body { padding-top: 100px; font-family: Roboto, sans-serif;}
+footer { margin-top: 100px;}
+table, td, th { vertical-align: middle; border: none;}
 th { border-bottom: 1px solid #DDD; width: 100px;}
+
+h1 {color: $lightgray;}
+
+.intro-box {
+  padding: 10px;
+  background: $base-color;
+  color: darken($white, 15%);
+  border: 1px solid darken($base-color, 20%);
+  text-shadow: 0 -1px 0 darken($base-color, 10%);
+  @include box-shadow(0, 1px, 0, lighten($base-color, 20%), inset);
+  @include border-radius(10px);
+}

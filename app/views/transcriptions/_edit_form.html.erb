@@ -1,0 +1,52 @@
+<%= form_for(@transcription, :html => {:multipart => true}, :role => 'form') do |f| %>
+  <div class="row">
+    <% if @transcription.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@transcription.errors.count, "error") %> prohibited this transcription from being saved:</h2>
+
+        <ul>
+        <% @transcription.errors.full_messages.each do |message| %>
+          <li class="alert alert-warning"><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, class: "form-control", placeholder: "Document Title", required: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %><br>
+      <%= f.text_area :description, class: "form-control", placeholder: "Document Description" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <% if @transcription.picture.present? %>
+          <%= image_tag(@transcription.picture_url, class: "img-responsive") %>
+        <% else %>
+          <%= f.label :picture %><br>
+          <%= f.file_field :picture %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :transcription %><br>
+        <%= f.text_area :transcription, class: "form-control", placeholder: "Transcription", rows: 30 %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="actions">
+        <%= f.submit "Save", class: "btn btn-default" %>
+      </div>
+    </div>
+  </div>
+<% end %>

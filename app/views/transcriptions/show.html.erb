@@ -1,27 +1,45 @@
-<p>
-  <strong>Title:</strong>
-  <%= @transcription.title %>
-</p>
 
-<p>
-  <strong>User name:</strong>
-  <%= @transcription.user_name %>
-</p>
+<% unless notice.nil? %>
+<div class="row">
+  <div class="col-md-12">
+    <p id="notice" class="alert alert-info" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+      </button>
+      <%= notice %>
+    </p>
+  </div>
+</div>
+<% end %>
 
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag(@transcription.picture_url, :width => 600) if @transcription.picture.present? %>
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <h1><%= @transcription.title %></h1>
+    <h2>Description:</h2>
+    <p>
+      <%= @transcription.description %>
+    </p>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @transcription.description %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <h3>Picture</h3>
+    <p>
+      <%= image_tag(@transcription.picture_url, class: "img-responsive") if @transcription.picture.present? %>
+    </p>
+  </div>
 
-<p>
-  <strong>Transcription:</strong>
-  <%= @transcription.transcription %>
-</p>
+  <div class="col-md-6">
+    <h3>User name</h3>
+    <%= @transcription.user_name %>
+    <h3>Transcription</h3>
+    <%= simple_format @transcription.transcription %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_transcription_path(@transcription) %> |
-<%= link_to 'Back', transcriptions_path %>
+<div class="row">
+  <%= link_to 'Edit', edit_transcription_path(@transcription), class: "btn btn-primary" %>
+  <%= link_to 'Back', transcriptions_path, class: "btn btn-success" %>
+</div>
+
