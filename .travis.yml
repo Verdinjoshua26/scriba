@@ -1,14 +1,21 @@
 language: ruby
-bundler_args: --without production
+bundler_args: "--without production"
 rvm:
-  - 2.0.0
-  - 2.1.2
+- 2.0.0
+- 2.1.2
 env:
-  - DB=sqlite
-  - DB=postgresql
+- DB=sqlite
+- DB=postgresql
 before_script:
-  - psql -c 'create database scriba_test' -U postgres
+- psql -c 'create database scriba_test' -U postgres
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rspec spec
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec spec
+deploy:
+  provider: heroku
+  api_key:
+    secure: v01ZhgdUNf06gYOZeRWGdunvz8oDo/la/aIzyyp58zAIsJs9+xXrcffJPUzmNvpDTcwHsPPX8yhGCeNiHHLnYlnKfuogLQWb2UlBAfX5cDP/MNYsV7SjkwbB0pkYPRodKlzDJjOGQr13MKxslU6BPVuY1deFZjTrqs21CNCAaaYstdjE+jIOhTkC1q1tHqeISQmiDonoHldoVeYLZVLWCfW9FQUFO9dXAnOuRPkkE74DiubbiEiqk2RjvTxMs0Vb6Axsr28T7b7Jm4UlhB34Fk0wyyyX62oIhAk3xfCUBr3u4ZdwriDRtIFLp3EPfg8wusymmjBVhbbE1dy5hr4sTR8LKtv5KIM7anRE6G0bXItu+ilblmgBPAd3/wpKeXA98VaKQWu9+EbUIvtNglpUnrywvivq1dgzpkB40X/DIAEDwVeGeulEDbXwHPT1zjH0+sQ1BBGSNoBBSoJLN5TyVoN1e5TnSrYkZxWXvrGdTx1zxIEMhBm4NEsNmz1lT35/y9jV8R+sGX66MC3MWz8/+5Oj7K24sw4p/eNyAH/g2pZokQHRDHGgVHrUec5C2RfNU6F09VFK/DtQulYamq2n0fHYIYkyFdFWPJvjNChBjnXMfzoSFvN0P36hBrwmeTD/aQQxcoX5kG33urmVmGR833Wrt2+oAy4JtKtQ4N9SPQA=
+  app: whispering-shelf-79608
+  on:
+    repo: bmw9t/scriba
