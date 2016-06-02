@@ -19,7 +19,7 @@
       <tr>
         <td><%= transcription.title %></td>
         <td><%= transcription.user_name %></td>
-        <td><%= transcription.picture %></td>
+        <td><%= image_tag transcription.picture_url(:thumb) if transcription.picture.present? %></td>
         <td><%= transcription.description %></td>
         <td><%= transcription.transcription %></td>
         <td><%= link_to 'Show', transcription %></td>
