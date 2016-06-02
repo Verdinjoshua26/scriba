@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @transcription.title %>
+</p>
+
+<p>
+  <strong>User name:</strong>
+  <%= @transcription.user_name %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @transcription.picture %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @transcription.description %>
+</p>
+
+<p>
+  <strong>Transcription:</strong>
+  <%= @transcription.transcription %>
+</p>
+
+<%= link_to 'Edit', edit_transcription_path(@transcription) %> |
+<%= link_to 'Back', transcriptions_path %>
