@@ -16,3 +16,6 @@
 !/log/.keep
 /tmp
 public/uploads/
+public/uploads
+tmp
+log
