@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe TranscriptionsController do
   describe "GET 'index'" do
-    it "returns http success header" do
+    it "returns http success header " do
       get :index
       expect(response).to be_success
       expect(response).to have_http_status(200)
