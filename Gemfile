@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'carrierwave'
 gem 'mini_magick', '~> 3.7.0'
-gem 'devise', '~> 3.4.0'
+gem 'devise', '~> 4.7.1'
 gem 'gravtastic', '~> 3.2.6'
 gem 'rspec-rails', '~> 3.1.0', group: [:development, :test]
 
