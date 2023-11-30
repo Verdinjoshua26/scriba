@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'carrierwave'
+gem 'carrierwave', '>= 2.2.5'
 gem 'mini_magick', '~> 3.7.0'
 gem 'devise', '~> 3.4.0'
 gem 'gravtastic', '~> 3.2.6'
